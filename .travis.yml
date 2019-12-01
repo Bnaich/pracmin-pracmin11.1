@@ -6,6 +6,6 @@ services:
 before_script:
   - docker-compose up -d
 
-script: pytest-3 tester.py -s
+script: pytest tester.py -s
         
 
