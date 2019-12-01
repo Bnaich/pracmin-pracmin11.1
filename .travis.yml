@@ -13,7 +13,7 @@ script: pytest tester.py -s
 after-success:
         IMAGE_NAME=bnaich-server
         echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin &&
-        docker tag "$IMAGE_NAME" . &&
-        docker push "$IMAGE_NAME"
+        docker tag "${DOCKER_USERNAME}/${IMAGE_NAME}" . &&
+        docker push "${DOCKER_USERNAME}/${IMAGE_NAME}"
         
 
