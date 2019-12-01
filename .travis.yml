@@ -11,7 +11,7 @@ before_script:
 script: pytest tester.py -s
 
 after-success:
-  - push IMAGE_NAME=bnaich-server
+  - test $TRAVIS_BRANCH = "master" && IMAGE_NAME=bnaich-server &&
          echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin &&
          docker tag ${IMAGE_NAME} ${DOCKER_USERNAME}/pracmin_server &&
          docker push ${DOCKER_USERNAME}/pracmin_server
