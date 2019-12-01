@@ -9,5 +9,11 @@ before_script:
   - docker-compose up -d
 
 script: pytest tester.py -s
+
+after-success:
+        IMAGE_NAME=bnaich-server
+        echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        docker build -t "$IMAGENAME" .
+        docker push "$IMAGE_NAME"
         
 
