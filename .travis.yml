@@ -17,7 +17,7 @@ env:
 after-success:
   - test $TRAVIS_BRANCH = "master"  &&
          echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin &&
-         docker build --tag ${DOCKER_USERNAME}/pracmin_server &&
+         docker build --tag ${DOCKER_USERNAME}/pracmin_server . &&
          docker push ${DOCKER_USERNAME}/pracmin_server
         
 
